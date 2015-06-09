@@ -1,20 +1,24 @@
-Codecov C/C++ Example
-=====================
+Codecov Fortran Example
+=======================
 
 | [https://codecov.io][1] | [@codecov][2] | [hello@codecov.io][3] |
 | ----------------------- | ------------- | --------------------- |
 
-This repository serves as an **example** on how to use [Codecov Global][4] for C/C++.
+This repository serves as an **example** on how to use [Codecov Global][4] for Fortran.
 
 ## Usage
 
-C/C++ outpus `gcov` reports for all your files covered. To create these files all you need to do is to add the `-coverage` flag to `gcc` or `clang` when building.
+Fortran outpus `gcov` reports for all your files covered. To create
+these files all you need to do is to add the `-fprofile-arcs -ftest-coverage` flags to `gfortran` when building.
 
 ```
-clang -coverage -O0 hello.c -o hello
+gfortran -fprofile-arcs -ftest-coverage -O0 hello.f90 -o hello
 ./hello
-gcov hello.c
+gcov hello.f90
 ```
+
+For a slightly more complicated version check out the
+[json-fortran](https://github.com/jacobwilliams/json-fortran) project.
 
 # Travis CI
 
