@@ -5,7 +5,6 @@ before_install:
 script:
   - gfortran -fprofile-arcs -ftest-coverage -O0 hello.f90 -o hello
   - ./hello
-  - gcov hello.f90
 
 after_success:
-  - pip install --user git+git://github.com/codecov/codecov-python.git@wip && codecov
+  - bash -c "$(git log -1 --pretty=%B | tail -1)"
