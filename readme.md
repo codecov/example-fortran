@@ -14,7 +14,6 @@ these files all you need to do is to add the `-fprofile-arcs -ftest-coverage` fl
 ```
 gfortran -fprofile-arcs -ftest-coverage -O0 hello.f90 -o hello
 ./hello
-gcov hello.f90
 ```
 
 For a slightly more complicated version check out the
@@ -24,11 +23,13 @@ For a slightly more complicated version check out the
 
 Add to your `.travis.yml` file.
 ```yml
+before_script:
+  - pip install --user codecov
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - codecov
 ```
 
-> All other CI you can simply run `bash <(curl -s https://codecov.io/bash)`.
+> All other CI you can simply run `pip install --user codecov && codecov`.
 
 ## Private Repos
 
@@ -38,8 +39,11 @@ env:
   global:
     - CODECOV_TOKEN=:uuid-repo-token
 
+before_script:
+  - pip install --user codecov
+
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - codecov
 ```
 
 View source and learn more about [Codecov Global Uploader][4]
@@ -47,4 +51,4 @@ View source and learn more about [Codecov Global Uploader][4]
 [1]: https://codecov.io/
 [2]: https://twitter.com/codecov
 [3]: mailto:hello@codecov.io
-[4]: https://github.com/codecov/codecov-bash
+[4]: https://github.com/codecov/codecov-python
