@@ -2,11 +2,10 @@ language: c
 sudo: required
 before_install:
   - sudo apt-get install gfortran
-  - pip install --user codecov
 
 script:
   - gfortran -fprofile-arcs -ftest-coverage -O0 hello.f90 -o hello
   - ./hello
 
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
