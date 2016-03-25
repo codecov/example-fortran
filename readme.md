@@ -23,27 +23,16 @@ For a slightly more complicated version check out the
 
 Add to your `.travis.yml` file.
 ```yml
-before_script:
-  - pip install --user codecov
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
 ```
-
-> All other CI you can simply run `pip install --user codecov && codecov`.
 
 ## Private Repos
 
 Add to your `.travis.yml` file.
 ```yml
-env:
-  global:
-    - CODECOV_TOKEN=:uuid-repo-token
-
-before_script:
-  - pip install --user codecov
-
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
 ```
 
 View source and learn more about [Codecov Global Uploader][4]
@@ -51,4 +40,4 @@ View source and learn more about [Codecov Global Uploader][4]
 [1]: https://codecov.io/
 [2]: https://twitter.com/codecov
 [3]: mailto:hello@codecov.io
-[4]: https://github.com/codecov/codecov-python
+[4]: https://github.com/codecov/codecov-bash
