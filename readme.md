@@ -6,6 +6,7 @@ Codecov Fortran Example
 
 This repository serves as an **example** on how to use [Codecov Global][4] for Fortran.
 
+
 ## Usage
 
 Fortran outpus `gcov` reports for all your files covered. To create
